@@ -91,7 +91,7 @@ var compile = function(tmpl, tmplFile) {
  * Renders `tmpl`.
  *
  * @param {String} tmpl The raw EJS template
- * @param {Object} data
+ * @param {Object} data Contains values to be used in `tmpl`
  * @param {String} tmplFile The path to the template file that contains `tmpl`
  * @return {String}
  * @api public

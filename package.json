@@ -1,7 +1,7 @@
 {
   "name": "sejs",
-  "version": "0.0.1",
-  "description": "Embedded JavaScript without bells and whistles.",
+  "version": "0.1.0",
+  "description": "Embedded JavaScript without the bells and whistles.",
   "author": "Lim Yuan Qing",
   "license": "MIT",
   "repository": {
