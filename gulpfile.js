@@ -26,7 +26,7 @@ gulp.task('test', function() {
     }));
 });
 
-gulp.task('coverage', function() {
+gulp.task('cov', function() {
   return gulp.src(paths.src)
     .pipe(plumber())
     .pipe(istanbul())
@@ -49,5 +49,5 @@ gulp.task('watch', function() {
 
 gulp.task('default', [
   'lint',
-  'coverage',
+  'cov',
 ]);

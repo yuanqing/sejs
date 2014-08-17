@@ -2,9 +2,17 @@ var fs = require('fs');
 
 var sejs = {};
 
-sejs.compile = function(tmpl, filePath) {
+/**
+ * Compiles `tmpl` into a function.
+ *
+ * @param {String} tmpl The raw EJS template
+ * @param {String} tmplFile The path to the template file that contains `tmpl`
+ * @return {Function}
+ * @api private
+ */
+var compile = function(tmpl, tmplFile) {
 
-  filePath = filePath || 'sejs';
+  tmplFile = tmplFile || 'sejs';
 
   var buf = [], echoBuf = [], str = '';
   var newLine = false, echo = false;
@@ -76,13 +84,30 @@ sejs.compile = function(tmpl, filePath) {
   pushToEchoBuf();
   pushToBuf();
 
-  return new Function('d', "try{var n=1,b=[];with(d||{}){" + buf.join('') + "}return b.join('');}catch(err){err.message='" + filePath + ":'+n+'\\n'+err.message;throw err;}");
+  return new Function('d', "try{var n=1,b=[];with(d||{}){" + buf.join('') + "}return b.join('');}catch(err){err.message='" + tmplFile + ":'+n+'\\n'+err.message;throw err;}");
 };
 
+/**
+ * Renders `tmpl`.
+ *
+ * @param {String} tmpl The raw EJS template
+ * @param {Object} data
+ * @param {String} tmplFile The path to the template file that contains `tmpl`
+ * @return {String}
+ * @api public
+ */
 sejs.render = function(tmpl, data, tmplFile) {
-  return sejs.compile(tmpl, tmplFile)(data);
+  return compile(tmpl, tmplFile)(data);
 };
 
+/**
+ * Renders the template in `tmplFile`.
+ *
+ * @param {String} tmplFile The path to the template file
+ * @param {Object} data
+ * @param {Function} cb The `rendered` result is returned via `cb(err, rendered)`.
+ * @api public
+ */
 sejs.renderFile = function(tmplFile, data, cb) {
   if (typeof data === 'function') {
     cb = data;
