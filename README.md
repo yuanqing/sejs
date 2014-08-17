@@ -2,11 +2,22 @@
 
 > Embedded JavaScript without the bells and whistles.
 
+## Why
+
+For the most part, sEJS is a technical exercise that spun out of trying to understand how JavaScript templating works.
+
+sEJS is also:
+
+- A smaller [EJS](https://github.com/visionmedia/ejs).
+
+- Similar to [John Resig&rsquo;s micro-templating script](http://ejohn.org/blog/javascript-micro-templating/), but without using any Regular Expressions and with better error reporting.
+
+## Usage
+
 ```js
-var tmpl =
-  '<% if (foo) { %>' +
-  '  <h1><%= foo.bar %>, <%= foo.baz %>!</h1>' +
-  '<% } %>';
+var tmpl = '<% if (foo) { %>' +
+           '<h1><%= foo.bar %>, <%= foo.baz %>!</h1>' +
+           '<% } %>';
 var data = {
   foo: {
     bar: 'Hello',
@@ -17,16 +28,6 @@ sejs.render(tmpl, data); //=> "<h1>Hello, World!</h1>"
 ```
 
 Place JavaScript between `<%` and `%>` tags. To print the variable, use `<%=` for the opening tag.
-
-## Why
-
-sEJS is:
-
-- A smaller [EJS](https://github.com/visionmedia/ejs), without many of its advanced features.
-
-- Functionally similar to [John Resig's micro-templating script](http://ejohn.org/blog/javascript-micro-templating/), but without any Regular Expressions and with better error reporting.
-
-This is, for the most part, a technical exercise that spun out of trying to understand how JavaScript templating works.
 
 ## API
 
@@ -42,7 +43,7 @@ Renders `tmpl`.
 
 Renders the template in `tmplFile`.
 
-- `tmplFile` is the path to the template file.
+- `tmplFile` is the path to a template file.
 
 - `data` is an `object` containing values to be used in `tmpl`.
 
