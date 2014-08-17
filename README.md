@@ -1,6 +1,6 @@
 # sEJS [![npm Version](http://img.shields.io/npm/v/sejs.svg?style=flat)](https://www.npmjs.org/package/sejs) [![Build Status](https://img.shields.io/travis/yuanqing/sejs.svg?style=flat)](https://travis-ci.org/yuanqing/sejs) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/sejs.svg?style=flat)](https://coveralls.io/r/yuanqing/sejs)
 
-> Embedded JavaScript without the bells and whistles.
+> Embedded JavaScript templates without the bells and whistles.
 
 ## Why
 
