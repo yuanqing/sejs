@@ -4,8 +4,6 @@
 var sejs = require('..');
 var fs = require('fs');
 
-var fixtureDir = __dirname + '/fixture/';
-
 describe('sejs.render(tmpl, data)', function() {
 
   it('should work', function() {
@@ -40,12 +38,13 @@ describe('sejs.render(tmpl, data)', function() {
 
 describe('sejs.renderFile(tmplFile, data, cb)', function() {
 
+  var fixtureDir = __dirname + '/fixtures/';
   var tmplFile = fixtureDir + 'foo.html';
 
-  it('should throw if `tmplFile` does not exist', function(done) {
-    var invalid = fixtureDir + 'foo';
-    expect(fs.existsSync(invalid)).toBe(false);
-    sejs.renderFile(invalid, function(err) {
+  it('should return an `err` if `tmplFile` does not exist', function(done) {
+    var dummyFile = fixtureDir + 'foo';
+    expect(fs.existsSync(dummyFile)).toBe(false);
+    sejs.renderFile(dummyFile, function(err) {
       expect(err).toEqual(jasmine.any(Error));
       done();
     });

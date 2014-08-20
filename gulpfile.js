@@ -1,8 +1,9 @@
-var gulp = require('gulp'),
-    istanbul = require('gulp-istanbul'),
-    jasmine = require('gulp-jasmine'),
-    jshint = require('gulp-jshint'),
-    plumber = require('gulp-plumber');
+var gulp = require('gulp');
+var istanbul = require('gulp-istanbul');
+var jasmine = require('gulp-jasmine');
+var jshint = require('gulp-jshint');
+var plumber = require('gulp-plumber');
+var rimraf = require('gulp-rimraf');
 
 var paths = {
   src: ['index.js'],
@@ -26,7 +27,7 @@ gulp.task('test', function() {
     }));
 });
 
-gulp.task('cov', function() {
+gulp.task('cov', ['clean'], function() {
   return gulp.src(paths.src)
     .pipe(plumber())
     .pipe(istanbul())
@@ -38,6 +39,12 @@ gulp.task('cov', function() {
           reporters: ['lcov', 'text-summary']
         }));
     });
+});
+
+gulp.task('clean', function () {
+  return gulp.src(paths.coverage, { read: false })
+    .pipe(plumber())
+    .pipe(rimraf());
 });
 
 gulp.task('watch', function() {

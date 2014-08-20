@@ -4,13 +4,13 @@
 
 ## Why
 
-For the most part, sEJS is a technical exercise that spun out of trying to understand how JavaScript templating works.
+sEJS began as an endeavor to understand how JavaScript templating (in the vein of [ERB](http://ruby-doc.org/stdlib-2.1.2/libdoc/erb/rdoc/ERB.html) or PHP) works.
 
-sEJS is also:
+sEJS is:
 
 - A smaller [EJS](https://github.com/visionmedia/ejs).
 
-- Similar to [John Resig&rsquo;s micro-templating script](http://ejohn.org/blog/javascript-micro-templating/), but without using any Regular Expressions and with better error reporting.
+- Similar to [John Resig&rsquo;s micro-templating script](http://ejohn.org/blog/javascript-micro-templating/), but without regular expressions and with better error reporting.
 
 ## Usage
 
@@ -27,7 +27,7 @@ var data = {
 sejs.render(tmpl, data); //=> "<h1>Hello, World!</h1>"
 ```
 
-Place JavaScript between `<%` and `%>` tags. To print the variable, use `<%=` for the opening tag.
+Place JavaScript between `<%` and `%>` tags. To print a variable, use `<%=` for the opening tag.
 
 ## API
 
@@ -37,7 +37,7 @@ Renders `tmpl`.
 
 - `tmpl` is a raw EJS template `string`.
 
-- `data` is an `object` containing values to be used in `tmpl`.
+- `data` is an `object` containing values to be used in the template.
 
 ### sejs.renderFile(tmplFile, data, cb)
 
@@ -45,7 +45,7 @@ Renders the template in `tmplFile`.
 
 - `tmplFile` is the path to a template file.
 
-- `data` is an `object` containing values to be used in `tmpl`.
+- `data` is an `object` containing values to be used in the template.
 
 - The `rendered` result is returned via the `cb(err, rendered)` callback.
 
