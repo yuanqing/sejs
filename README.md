@@ -4,7 +4,7 @@
 
 ## Why
 
-sEJS began as an endeavor to understand how JavaScript templating (in the vein of [ERB](http://ruby-doc.org/stdlib-2.1.2/libdoc/erb/rdoc/ERB.html) or PHP) works.
+sEJS spun out of an endeavor to understand how JavaScript templating (in the vein of [ERB](http://ruby-doc.org/stdlib-2.1.2/libdoc/erb/rdoc/ERB.html) or PHP) works.
 
 sEJS is:
 
