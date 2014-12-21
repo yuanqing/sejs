@@ -63,6 +63,16 @@ To use sEJS in the browser, include [the minified script](https://github.com/yua
 </body>
 ```
 
+## Changelog
+
+- 0.2.0
+  - `sejs(tmpl)(data)` replaces `sejs.render(tmpl, data)`
+  - Remove `sejs.renderFile(tmplFile, data, cb)`
+  - Add bower.json
+  - Add a minified version of the module
+- 0.1.0
+  - Initial release
+
 ## License
 
 [MIT license](https://github.com/yuanqing/sejs/blob/master/LICENSE)
