@@ -8,22 +8,24 @@
     "type": "git",
     "url": "git://github.com/yuanqing/sejs.git"
   },
+  "main": "sejs.js",
   "devDependencies": {
-    "istanbul": "^0.3.0",
-    "jasmine-node": "^1.14.5",
-    "jshint": "^2.5.4",
-    "jshint-stylish": "^0.4.0"
+    "istanbul": "^0.3.2",
+    "jshint": "^2.5.10",
+    "jshint-stylish": "^1.0.0",
+    "minijasminenode2": "^1.0.0",
+    "uglify-js": "^2.4.15"
   },
   "scripts": {
-    "cover": "node_modules/.bin/istanbul cover node_modules/.bin/jasmine-node ./spec -x **/spec/**",
-    "lint": "node_modules/.bin/jshint --verbose --reporter node_modules/jshint-stylish/stylish.js index.js",
-    "lint-test": "node_modules/.bin/jshint --verbose --reporter node_modules/jshint-stylish/stylish.js ./spec/*.js",
-    "test": "node_modules/.bin/jasmine-node spec --verbose"
+    "lint": "node_modules/.bin/jshint --reporter=node_modules/jshint-stylish/stylish.js --verbose sejs.js test/*.spec.js",
+    "test": "rm -rf coverage && node_modules/.bin/istanbul cover -- node_modules/.bin/minijasminenode2 test/*.spec.js --verbose",
+    "dist": "node_modules/.bin/uglifyjs sejs.js --mangle --output sejs.min.js",
+    "build": "npm run lint && npm test && npm run dist"
   },
   "keywords": [
-    "ejs",
     "interpolate",
     "interpolation",
+    "string",
     "template",
     "templating"
   ]

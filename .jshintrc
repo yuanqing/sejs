@@ -11,11 +11,8 @@
   "latedef": true,
   "newcap": true,
   "noarg": true,
-  "quotmark": false,
+  "quotmark": true,
   "undef": true,
   "unused": true,
-  "globals": {
-    "define": true
-  },
   "evil": true
 }
