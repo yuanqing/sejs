@@ -25,7 +25,7 @@
       str = str.join('');
       if (isEcho) {
         str = str.trim();
-        buf.push(isNewLine ? "(n=" + n + ",l='" + lines[n] + "'," + str + ")" : str);
+        buf.push(isNewLine ? "(n=" + n + ",l='" + lines[n-1] + "'," + str + ")" : str);
         isNewLine = false;
       } else {
         buf.push("'" + str + "'");
@@ -58,7 +58,7 @@
       } else {
         pushBufToCompiled();
         if (isNewLine) {
-          compiled.push("n=" + n + ";l='" + lines[n] + "';");
+          compiled.push("n=" + n + ";l='" + lines[n-1] + "';");
           isNewLine = false;
         }
         compiled.push(str.join('').trim());
@@ -85,6 +85,6 @@
   pushStrToBuf();
   pushBufToCompiled();
 
-  return new Function('d', "try{var n=1,b=[],l='" + lines[0] + "';with(d||{}){" + compiled.join('') + "}return b.join('');}catch(e){e.message=n+'\\n'+e.message;throw e;}");
+  return new Function('d', "try{var b=[],n=1,l='" + lines[0] + "';with(d||{}){" + compiled.join('') + "}return b.join('');}catch(e){e.message='\\n  '+n+'| '+l+'\\n\\n'+e.message;\n  throw e;\n}");
 
 });

@@ -26,9 +26,9 @@ describe('sejs(tmpl)(data)', function() {
 
   it('throws if a variable referenced in `tmpl` is not in `data`', function(done) {
     try {
-      sejs('<%= foo %>')({});
+      sejs('\n<%= bar %>')({});
     } catch(err) {
-      expect(err.message.indexOf('foo is not defined') !== -1).toBe(true);
+      expect(err.message.indexOf('2| <%= bar %>') !== -1).toBe(true);
       done();
     }
   });
