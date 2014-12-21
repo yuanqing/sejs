@@ -4,11 +4,9 @@
 
 ## Why
 
-sEJS spun out of an endeavor to understand how JavaScript templating (in the vein of [ERB](http://ruby-doc.org/stdlib-2.1.2/libdoc/erb/rdoc/ERB.html) or PHP) works.
+sEJS spun out of an endeavor to understand how JavaScript templating (in the vein of [ERB](http://ruby-doc.org/stdlib-2.1.2/libdoc/erb/rdoc/ERB.html) or PHP) works. It is:
 
-sEJS is:
-
-- A smaller [EJS](https://github.com/visionmedia/ejs).
+- A smaller [EJS](https://github.com/tj/ejs).
 
 - Similar to [John Resig&rsquo;s micro-templating script](http://ejohn.org/blog/javascript-micro-templating/), but without regular expressions and with better error reporting.
 
@@ -16,7 +14,7 @@ sEJS is:
 
 ```js
 var tmpl = '<% if (foo) { %>' +
-           '<h1><%= foo.bar %>, <%= foo.baz %>!</h1>' +
+           '<%= foo.bar %>, <%= foo.baz %>!' +
            '<% } %>';
 var data = {
   foo: {
@@ -24,37 +22,45 @@ var data = {
     baz: 'World'
   }
 };
-sejs.render(tmpl, data); //=> "<h1>Hello, World!</h1>"
+
+sejs(tmpl)(data); //=> 'Hello, World!'
 ```
 
 Place JavaScript between `<%` and `%>` tags. To print a variable, use `<%=` for the opening tag.
 
 ## API
 
-### sejs.render(tmpl, data)
+### sejs(tmpl)(data)
 
-Renders `tmpl`.
+Returns a String, the result of rendering `tmpl` using values from `data`.
 
-- `tmpl` is a raw EJS template `string`.
-
-- `data` is an `object` containing values to be used in the template.
-
-### sejs.renderFile(tmplFile, data, cb)
-
-Renders the template in `tmplFile`.
-
-- `tmplFile` is the path to a template file.
-
-- `data` is an `object` containing values to be used in the template.
-
-- The `rendered` result is returned via the `cb(err, rendered)` callback.
+- `tmpl` &mdash; The template String.
+- `data` &mdash; An Object literal of values.
 
 ## Installation
 
-Install via [npm](https://www.npmjs.org/package/sejs):
+Install via [npm](https://www.npmjs.org/):
 
 ```bash
 $ npm i --save sejs
+```
+
+Install via [bower](http://bower.io/):
+
+```bash
+$ bower i --save yuanqing/sejs
+```
+
+To use sEJS in the browser, include [the minified script](https://github.com/yuanqing/tmplt/blob/master/sejs.min.js) in your HTML:
+
+```html
+<body>
+  <!-- ... -->
+  <script src="path/to/sejs.min.js"></script>
+  <script>
+    // sejs available here
+  </script>
+</body>
 ```
 
 ## License
